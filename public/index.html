@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Guess Who — Multiplayer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+  <div id="app">
+
+    <!-- Top bar (hidden until game starts) -->
+    <header id="topBar" class="topbar hidden">
+      <div class="brand">🎭 Guess Who?</div>
+      <div class="top-info">
+        <span class="chip">Room: <b id="roomGameLabel">—</b></span>
+        <span class="chip">Chooser: <b id="chooserName">—</b></span>
+        <span class="chip">Turn: <b id="turnName">—</b></span>
+        <span class="chip">You: <b id="youName">—</b></span>
+        <span class="chip warn" id="roundTimer">⏱️ 60s</span>
+      </div>
+      <div class="top-actions">
+        <button id="btnInviteGame" class="btn small ghost">Invite 🔗</button>
+        <button id="btn-exit-game" class="btn small ghost">Exit</button>
+      </div>
+    </header>
+
+    <!-- HOME -->
+    <section id="screen-home" class="screen active">
+      <div class="home-wrap">
+        <h1 class="title">🎉 Guess Who?</h1>
+        <p class="subtitle">Cartoon-style • Real-time multiplayer • Super responsive</p>
+
+        <div class="home-panels">
+          <div class="card">
+            <h2>Create / Join</h2>
+            <div class="grid-2">
+              <div>
+                <label>Display Name</label>
+                <input id="nameInput" type="text" placeholder="Your name"/>
+              </div>
+              <div>
+                <label>Room Code</label>
+                <div class="inline">
+                  <input id="roomCodeInput" type="text" placeholder="e.g. Q7K3XJ"/>
+                  <button id="btn-join" class="btn">Join</button>
+                </div>
+              </div>
+            </div>
+            <div class="divider"><span>or</span></div>
+            <div class="grid-2">
+              <div>
+                <label>Number of Sets</label>
+                <input id="setsInput" type="number" value="1" min="1" max="20"/>
+              </div>
+              <div class="vcenter">
+                <button id="btn-create" class="btn primary">Create Room</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="card info">
+            <h2>How to Play</h2>
+            <ol>
+              <li>Host creates a room (choose sets). Friends join with the code.</li>
+              <li>Each <b>round</b> one player is the <b>Chooser</b> and picks a secret character.</li>
+              <li>Others take turns: ask 1 question → Chooser answers Yes/No → then Guess or Pass.</li>
+              <li>You can also <b>guess anytime during your turn</b> after selecting a card.</li>
+              <li>Points are awarded for correct guesses; chooser gets a bonus.</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WAITING -->
+    <section id="screen-waiting" class="screen">
+      <div class="waiting-wrap card">
+        <div class="row space">
+          <h2>Room: <span id="roomCodeLabel" class="chip strong"></span></h2>
+          <div class="row gap">
+            <button id="copyLink" class="btn small">Copy Invite 🔗</button>
+            <button id="btn-start" class="btn primary">Start Game 🚀</button>
+            <button id="btn-leave-waiting" class="btn ghost">Leave</button>
+          </div>
+        </div>
+        <div class="players" id="playersList"></div>
+        <p class="hint">Host can start when ready. Chooser order is automatic.</p>
+      </div>
+    </section>
+
+    <!-- CHOOSER -->
+    <section id="screen-chooser" class="screen">
+      <div class="chooser-wrap">
+        <div class="card">
+          <h2>You are the <span class="accent">Chooser</span> — pick a secret character</h2>
+          <div id="chooserGrid" class="grid-characters"></div>
+          <div class="center mt">
+            <button id="btn-confirm-character" class="btn primary" disabled>Confirm ✅</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GAME -->
+    <section id="screen-game" class="screen">
+      <div class="game-layout">
+        <!-- LEFT: SCOREBOARD -->
+        <aside class="panel card">
+          <div class="panel-title">Leaderboard</div>
+          <div id="scoreList" class="score-list scroll-clip"></div>
+        </aside>
+
+        <!-- CENTER: BOARD -->
+        <main class="panel card">
+          <div id="boardGrid" class="grid-characters"></div>
+          <div class="legend">
+            <span class="chip">Selected: <b id="selectedName">—</b></span>
+          </div>
+        </main>
+
+        <!-- RIGHT: CHAT + ACTIONS -->
+        <aside class="panel card">
+          <div class="panel-title">Chat</div>
+          <div id="chatLog" class="chat-log scroll-clip bubbles"></div>
+
+          <div class="chat-input">
+            <input id="chatInput" type="text" placeholder="Ask ONE question on your turn…"/>
+            <button id="askBtn" class="btn small">Ask</button>
+          </div>
+
+          <div id="answerBadge" class="chip subtle hidden">Answer: —</div>
+
+          <div id="yesnoPanel" class="btn-row hidden">
+            <button id="btnYes" class="btn success small">Yes</button>
+            <button id="btnNo" class="btn danger small">No</button>
+          </div>
+
+          <div id="decisionPanel" class="btn-row hidden">
+            <button id="btnChooseGuess" class="btn warning small">🎯 Guess</button>
+            <button id="btnPass" class="btn secondary small">⏩ Pass</button>
+          </div>
+
+          <div class="final-guess">
+            <button id="btnFinalGuess" class="btn warning" disabled>Confirm Final Guess 🎯</button>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- OVER -->
+    <section id="screen-over" class="screen">
+      <div class="card center">
+        <h2>🏆 Final Leaderboard</h2>
+        <div id="winnerName" class="leaderboard-final"></div>
+        <div class="btn-row over-actions">
+          <button id="btn-play-again" class="btn primary">Play Again 🔁</button>
+          <button id="btn-close-over" class="btn ghost">Close</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Toast -->
+    <div id="toast" class="toast hidden"></div>
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="client.js"></script>
+</body>
+</html>
