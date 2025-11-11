@@ -8,6 +8,25 @@ const server = http.createServer(app);
 const io = new Server(server, { cors: { origin: "*" } });
 
 app.use(express.static("public"));
+
+import path from "path";
+import { fileURLToPath } from "url";
+
+// ✅ Required because you’re using ES modules
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+// ✅ Serve sitemap.xml file
+app.get("/sitemap.xml", (req, res) => {
+  res.set("Content-Type", "text/xml");
+  res.sendFile(path.join(__dirname, "sitemap.xml"));
+});
+
+// ✅ Optional: Serve robots.txt for SEO
+app.get("/robots.txt", (req, res) => {
+  res.sendFile(path.join(__dirname, "robots.txt"));
+});
+
 const PORT = process.env.PORT || 3000;
 
 // ========== ROOM MANAGEMENT ==========
