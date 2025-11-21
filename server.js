@@ -41,20 +41,104 @@ const CATEGORIES = {
     { emoji: "🐔", name: "Chicken" }, { emoji: "🦆", name: "Duck" }, { emoji: "🦉", name: "Owl" }, { emoji: "🦓", name: "Zebra" },
     { emoji: "🦒", name: "Giraffe" }, { emoji: "🐘", name: "Elephant" }, { emoji: "🐹", name: "Hamster" }, { emoji: "🐰", name: "Rabbit" }
   ],
-  players: [
-    { emoji: "🧔", name: "Alex" }, { emoji: "👩‍🦱", name: "Mia" }, { emoji: "👨‍🦰", name: "Leo" }, { emoji: "👩‍🦳", name: "Sophia" },
-    { emoji: "👨‍🦲", name: "Victor" }, { emoji: "👩‍🦰", name: "Emma" }, { emoji: "🧑‍🦰", name: "Noah" }, { emoji: "🧑‍🦱", name: "Ava" },
-    { emoji: "🧑‍🦲", name: "Zane" }, { emoji: "🧔‍♂️", name: "Chris" }, { emoji: "👩", name: "Lara" }, { emoji: "👨", name: "Ryan" },
-    { emoji: "👩‍🦰", name: "Ella" }, { emoji: "👩‍🦲", name: "Nina" }, { emoji: "🧔‍♂️", name: "Mark" }, { emoji: "👩‍🦳", name: "Iris" },
-    { emoji: "👨‍🦱", name: "Ethan" }, { emoji: "👩‍🦱", name: "Ruby" }, { emoji: "👨‍🦰", name: "Owen" }, { emoji: "👩‍🦰", name: "Maya" }
-  ],
   celebrities: [
     { emoji: "🎤", name: "Singer" }, { emoji: "🎬", name: "Actor" }, { emoji: "⚽", name: "Footballer" }, { emoji: "🏀", name: "Hooper" },
     { emoji: "🎧", name: "DJ" }, { emoji: "🎻", name: "Violinist" }, { emoji: "🎸", name: "Guitarist" }, { emoji: "🎹", name: "Pianist" },
     { emoji: "🏎️", name: "Racer" }, { emoji: "🏊", name: "Swimmer" }, { emoji: "🏏", name: "Cricketer" }, { emoji: "🤹", name: "Performer" },
     { emoji: "🎮", name: "Streamer" }, { emoji: "📰", name: "Host" }, { emoji: "📚", name: "Author" }, { emoji: "🧪", name: "Scientist" },
     { emoji: "🏈", name: "Quarterback" }, { emoji: "🎯", name: "Archer" }, { emoji: "🥊", name: "Boxer" }, { emoji: "🤡", name: "Comedian" }
-  ]
+  ],
+  footballPlayers: [
+  { emoji: "⚽", name: "Lionel Messi" },
+  { emoji: "⚽", name: "Cristiano Ronaldo" },
+  { emoji: "⚽", name: "Neymar Jr" },
+  { emoji: "⚽", name: "Kylian Mbappé" },
+  { emoji: "⚽", name: "Erling Haaland" },
+  { emoji: "⚽", name: "Kevin De Bruyne" },
+  { emoji: "⚽", name: "Robert Lewandowski" },
+  { emoji: "⚽", name: "Luka Modrić" },
+  { emoji: "⚽", name: "Mohamed Salah" },
+  { emoji: "⚽", name: "Virgil van Dijk" },
+  { emoji: "⚽", name: "Harry Kane" },
+  { emoji: "⚽", name: "Sergio Ramos" },
+  { emoji: "⚽", name: "Karim Benzema" },
+  { emoji: "⚽", name: "Ronaldinho" },
+  { emoji: "⚽", name: "Zlatan Ibrahimović" },
+  { emoji: "⚽", name: "Andrés Iniesta" },
+  { emoji: "⚽", name: "Xavi Hernández" },
+  { emoji: "⚽", name: "Paolo Maldini" },
+  { emoji: "⚽", name: "David Beckham" },
+  { emoji: "⚽", name: "Pelé" }
+],
+CricketPlayers: [
+  { emoji: "🏏", name: "Virat Kohli" },
+  { emoji: "🏏", name: "Rohit Sharma" },
+  { emoji: "🏏", name: "Sachin Tendulkar" },
+  { emoji: "🏏", name: "MS Dhoni" },
+  { emoji: "🏏", name: "AB de Villiers" },
+  { emoji: "🏏", name: "Kane Williamson" },
+  { emoji: "🏏", name: "Joe Root" },
+  { emoji: "🏏", name: "Babar Azam" },
+  { emoji: "🏏", name: "Ben Stokes" },
+  { emoji: "🏏", name: "David Warner" },
+  { emoji: "🏏", name: "Steve Smith" },
+  { emoji: "🏏", name: "Jasprit Bumrah" },
+  { emoji: "🏏", name: "Shaheen Afridi" },
+  { emoji: "🏏", name: "Lasith Malinga" },
+  { emoji: "🏏", name: "Shane Warne" },
+  { emoji: "🏏", name: "Muttiah Muralitharan" },
+  { emoji: "🏏", name: "Wasim Akram" },
+  { emoji: "🏏", name: "Ricky Ponting" },
+  { emoji: "🏏", name: "Brian Lara" },
+  { emoji: "🏏", name: "Chris Gayle" }
+],
+IndianActors: [
+  { emoji: "🎬", name: "Shah Rukh Khan" },
+  { emoji: "🎬", name: "Salman Khan" },
+  { emoji: "🎬", name: "Aamir Khan" },
+  { emoji: "🎬", name: "Akshay Kumar" },
+  { emoji: "🎬", name: "Hrithik Roshan" },
+  { emoji: "🎬", name: "Ranbir Kapoor" },
+  { emoji: "🎬", name: "Ranveer Singh" },
+  { emoji: "🎬", name: "Ajay Devgn" },
+  { emoji: "🎬", name: "Amitabh Bachchan" },
+  { emoji: "🎬", name: "Rajinikanth" },
+  { emoji: "🎬", name: "Kamal Haasan" },
+  { emoji: "🎬", name: "Vijay" },
+  { emoji: "🎬", name: "Allu Arjun" },
+  { emoji: "🎬", name: "Prabhas" },
+  { emoji: "🎬", name: "Yash" },
+  { emoji: "🎬", name: "Jr NTR" },
+  { emoji: "🎬", name: "Ram Charan" },
+  { emoji: "🎬", name: "Dhanush" },
+  { emoji: "🎬", name: "Mohanlal" },
+  { emoji: "🎬", name: "Mammootty" }
+],
+IndianActresses: [
+  { emoji: "🎬", name: "Deepika Padukone" },
+  { emoji: "🎬", name: "Alia Bhatt" },
+  { emoji: "🎬", name: "Priyanka Chopra" },
+  { emoji: "🎬", name: "Katrina Kaif" },
+  { emoji: "🎬", name: "Anushka Sharma" },
+  { emoji: "🎬", name: "Kareena Kapoor" },
+  { emoji: "🎬", name: "Aishwarya Rai" },
+  { emoji: "🎬", name: "Kajol" },
+  { emoji: "🎬", name: "Taapsee Pannu" },
+  { emoji: "🎬", name: "Samantha Ruth Prabhu" },
+  { emoji: "🎬", name: "Rashmika Mandanna" },
+  { emoji: "🎬", name: "Nayanthara" },
+  { emoji: "🎬", name: "Trisha Krishnan" },
+  { emoji: "🎬", name: "Sai Pallavi" },
+  { emoji: "🎬", name: "Keerthy Suresh" },
+  { emoji: "🎬", name: "Pooja Hegde" },
+  { emoji: "🎬", name: "Shraddha Kapoor" },
+  { emoji: "🎬", name: "Vidya Balan" },
+  { emoji: "🎬", name: "Yami Gautam" },
+  { emoji: "🎬", name: "Mrunal Thakur" }
+]
+
+
+
 };
 
 function pickRandomCategory() {
